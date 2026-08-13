@@ -3,9 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Autenticação — Autentich</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <main class="page">
+        <section class="hero">
+            <div class="brand">Autentich</div>
+            <h1 class="hero-title">Acesse sua conta com segurança</h1>
+            <p class="hero-sub">Entrar para gerenciar seu perfil e suas configurações.</p>
+        </section>
+
+        <section class="auth">
+            <div class="auth-card" role="region" aria-labelledby="auth-heading">
+                <div class="auth-tabs" role="tablist" aria-label="Autenticação">
+                    <button class="tab active" role="tab" aria-selected="true" data-target="login">Entrar</button>
+                    <button class="tab" role="tab" aria-selected="false" data-target="register">Registrar</button>
+                </div>
+
+                <h2 id="auth-heading" class="visually-hidden">Formulário de autenticação</h2>
+
+                <form id="login" class="auth-form" autocomplete="on">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" placeholder="seu@exemplo.com" required>
+
+                    <label for="password">Senha</label>
+                    <input id="password" name="password" type="password" placeholder="••••••••" required>
+
+                    <div class="actions">
+                        <button type="submit" class="btn primary">Entrar</button>
+                        <a href="#" class="link small">Esqueci minha senha</a>
+                    </div>
+                </form>
+
+                <form id="register" class="auth-form hidden" autocomplete="on">
+                    <label for="name">Nome completo</label>
+                    <input id="name" name="name" type="text" placeholder="Seu nome" required>
+
+                    <label for="r-email">Email</label>
+                    <input id="r-email" name="email" type="email" placeholder="seu@exemplo.com" required>
+
+                    <label for="r-password">Senha</label>
+                    <input id="r-password" name="password" type="password" placeholder="Crie uma senha" required>
+
+                    <div class="actions">
+                        <button type="submit" class="btn primary">Criar conta</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script>
+    // Abas simples sem dependências
+    document.querySelectorAll('.tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            const target = btn.dataset.target;
+            document.querySelectorAll('.auth-form').forEach(f => f.classList.add('hidden'));
+            document.getElementById(target).classList.remove('hidden');
+        });
+    });
+
+    // Prevent actual submit in static UI
+    document.querySelectorAll('.auth-form').forEach(f => {
+        f.addEventListener('submit', e => { e.preventDefault(); alert('Submit interceptado (demo).'); });
+    });
+    </script>
 </body>
 </html>

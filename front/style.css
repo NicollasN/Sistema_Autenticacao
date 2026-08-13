@@ -1,0 +1,50 @@
+:root{
+	--bg:#0f1724; /* deep navy */
+	--card:#0f1724; /* keep transparent feel */
+	--muted:#93a0b7;
+	--accent:#6ee7b7; /* soft mint */
+	--accent-2:#7c5cff; /* violet signature */
+	--glass: rgba(255,255,255,0.04);
+	--radius:12px;
+	--max-width:960px;
+	font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+	margin:0;
+	background:linear-gradient(180deg,#071029 0%, #0b1220 60%);
+	color:#e6eef8;
+	-webkit-font-smoothing:antialiased;
+}
+.page{display:flex;gap:32px;align-items:center;justify-content:center;min-height:100vh;padding:48px}
+.hero{max-width:420px}
+.brand{font-weight:700;color:var(--accent-2);letter-spacing:0.08em}
+.hero-title{font-size:28px;margin:8px 0 6px}
+.hero-sub{color:var(--muted);margin:0 0 24px}
+
+.auth{display:flex;align-items:center;justify-content:center;width:100%}
+.auth-card{width:420px;background:linear-gradient(180deg,rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:20px;box-shadow:0 8px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+.auth-tabs{display:flex;gap:8px;margin-bottom:12px}
+.tab{flex:1;padding:10px;border-radius:10px;border:none;background:transparent;color:var(--muted);cursor:pointer}
+.tab.active{background:linear-gradient(90deg, rgba(124,92,255,0.12), rgba(110,231,183,0.06));color:var(--accent);}
+.auth-form{display:flex;flex-direction:column;gap:8px}
+.auth-form.hidden{display:none}
+label{font-size:13px;color:var(--muted)}
+input{padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+input:focus{outline:none;box-shadow:0 0 0 4px rgba(124,92,255,0.06);border-color:rgba(124,92,255,0.18)}
+.actions{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.btn{border:0;padding:10px 14px;border-radius:10px;cursor:pointer}
+.btn.primary{background:linear-gradient(90deg,var(--accent-2),var(--accent));color:#041025;font-weight:600}
+.link{color:var(--muted);text-decoration:none}
+.small{font-size:13px}
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+
+@media (max-width:720px){
+	.page{flex-direction:column;padding:24px}
+	.auth-card{width:100%}
+	.hero{order:2;text-align:center}
+}
+
+/* reduce motion respecting */
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
